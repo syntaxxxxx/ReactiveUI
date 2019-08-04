@@ -6,7 +6,5 @@ This repository is Starter Project & Final for Tutorial IMASTUDIO :
 
 - Starter Project `(branch:starter)`
 - Kotlin
-- MVVM Apporach `(branch:mvvm)`
-- LiveData
-- Data Binding
-- Unit Test
+- MVVM Apporach `(branch:master)`
+- Data Binding + Unit Test `(branch:final)`
