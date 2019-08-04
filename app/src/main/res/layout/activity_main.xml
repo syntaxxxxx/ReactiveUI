@@ -1,60 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp"
-        tools:context=".MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
 
-    <TextView
-            android:textSize="20sp"
-            android:layout_marginTop="25dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Silahkan"/>
+        <variable name="viewmodel"
+                  type="com.syntax.tutorialmvvmdatabindingunittest.MainViewModel"/>
 
-    <EditText
-            android:id="@+id/edt_nama"
-            android:hint="Nama"
-            android:layout_marginTop="16dp"
+    </data>
+    <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            tools:context=".MainActivity">
 
-    <TextView
-            android:textSize="20sp"
-            android:layout_marginTop="25dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Masukan Nilai"/>
+        <TextView
+                android:textSize="20sp"
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Silahkan"/>
 
-    <Spinner
-            android:id="@+id/value_a"
-            android:layout_marginTop="25dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <EditText
+                android:id="@+id/edt_nama"
+                android:hint="Nama"
+                android:text="@={viewmodel.name}"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-    <Spinner
-            android:id="@+id/value_b"
-            android:layout_marginTop="25dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <TextView
+                android:textSize="20sp"
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Masukan Nilai"/>
 
-    <Spinner
-            android:id="@+id/value_c"
-            android:layout_marginTop="25dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <Spinner
+                android:id="@+id/value_a"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-    <TextView
-            android:layout_marginTop="25dp"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:id="@+id/tv_hasil"
-            android:text="Hasil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-</LinearLayout>
+        <Spinner
+                android:id="@+id/value_b"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <Spinner
+                android:id="@+id/value_c"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:id="@+id/tv_hasil"
+                android:text="Hasil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <Button
+                android:id="@+id/btn_save_name"
+                android:layout_marginTop="25dp"
+                android:text="save name"
+                android:onClick="@{() -> viewmodel.showToView()}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:id="@+id/tv_hasil_2"
+                android:text="Hasil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+</layout>
