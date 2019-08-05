@@ -19,12 +19,20 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: MainViewModel
+
+    // deklarasi your binding
     lateinit var binding: com.syntax.tutorialmvvmdatabindingunittest.databinding.ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // inisialisasi layout your binding
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+
+        // binding to view model
+        // because we want ViewModel can communication with layout
         binding.viewmodel = viewModel
 
         initSpinners()
@@ -33,6 +41,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initLiveDataObservers() {
+
+        // update your data to UI
         viewModel.getAllValue().observe(this, Observer { value ->
             value?.let {
                 tv_hasil.text = value.hasil.toString()
@@ -40,6 +50,8 @@ class MainActivity : AppCompatActivity() {
             }
         })
         viewModel.getSaveLiveData().observe(this, Observer {
+
+            // update your data to UI
             it?.let {
                 if (it) {
                     Toast.makeText(this, "ada data", Toast.LENGTH_SHORT).show()

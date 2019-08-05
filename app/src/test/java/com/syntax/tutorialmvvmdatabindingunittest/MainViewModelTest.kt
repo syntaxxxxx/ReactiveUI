@@ -32,7 +32,7 @@ class MainViewModelTest {
         viewModel.valueA = 1
         viewModel.valueB = 2
         viewModel.valueC = 3
-        viewModel.name = "Fiqri Kece"
+        viewModel.name.set("Fiqri Kece")
         val isNotEmpty = viewModel.isNotEmptyField()
         Assert.assertEquals(true, isNotEmpty)
     }

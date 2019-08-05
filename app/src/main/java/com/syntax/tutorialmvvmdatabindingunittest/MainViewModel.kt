@@ -17,14 +17,19 @@ class MainViewModel(private val valueGenerator: ValueGenerator = ValueGenerator(
     val valueLiveData = MutableLiveData<Value>()
     val saveLiveData = MutableLiveData<Boolean>()
 
+    // get all data value
     fun getAllValue(): LiveData<Value> {
         return valueLiveData
     }
 
+    // save data if field is not empty
     fun getSaveLiveData(): LiveData<Boolean> {
         return saveLiveData
     }
 
+    /**
+     * update value realtime
+     * */
     fun updateValue() {
         val valueSpinner = ValueSpinner(valueA, valueB, valueC)
         values = valueGenerator.generateAllValue(valueSpinner, name.get() ?: "")
@@ -40,11 +45,18 @@ class MainViewModel(private val valueGenerator: ValueGenerator = ValueGenerator(
             SpinnerType.VALUE_C ->
                 valueC = SetValueSpinner.VALUE_C[position].value
         }
+        // update value when user interactions with spinner
         updateValue()
     }
 
+    /**
+     * cek if not empty & show data to view
+     * call this function into your binding layout
+     * event click button
+     * */
     fun showToView() {
         return if (isNotEmptyField()) {
+            // update value
             updateValue()
             saveLiveData.postValue(true)
         } else {
@@ -52,7 +64,7 @@ class MainViewModel(private val valueGenerator: ValueGenerator = ValueGenerator(
         }
     }
 
-    // for unit test
+    // cek is not empty field
     fun isNotEmptyField(): Boolean {
         val name = this.name.get()
         name?.let {
