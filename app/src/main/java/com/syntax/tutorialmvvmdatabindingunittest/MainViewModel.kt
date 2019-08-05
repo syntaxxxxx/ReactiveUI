@@ -8,7 +8,7 @@ import com.syntax.tutorialmvvmdatabindingunittest.model.*
 
 class MainViewModel(private val valueGenerator: ValueGenerator = ValueGenerator()) : ViewModel() {
 
-    var name = ObservableField<String>("")
+    var name = ""
     var valueA: Int = 0
     var valueB: Int = 0
     var valueC: Int = 0
@@ -26,9 +26,6 @@ class MainViewModel(private val valueGenerator: ValueGenerator = ValueGenerator(
     }
 
     fun updateValue() {
-        val valueSpinner = ValueSpinner(valueA, valueB, valueC)
-        values = valueGenerator.generateAllValue(valueSpinner, name.get() ?: "")
-        valueLiveData.postValue(values)
     }
 
     fun isSpinnerSelected(spinnerType: SpinnerType, position: Int) {
@@ -44,21 +41,5 @@ class MainViewModel(private val valueGenerator: ValueGenerator = ValueGenerator(
     }
 
     fun showToView() {
-        return if (isNotEmptyField()) {
-            updateValue()
-            saveLiveData.postValue(true)
-        } else {
-            saveLiveData.postValue(false)
-        }
-    }
-
-    // for unit test
-    fun isNotEmptyField(): Boolean {
-        val name = this.name.get()
-        name?.let {
-            return valueA != 0 && valueB != 0 && valueC != 0 &&
-                    name.isNotEmpty()
-        }
-        return false
     }
 }

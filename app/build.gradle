@@ -21,9 +21,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding{
-        enabled = true
-    }
 }
 
 dependencies {
@@ -38,11 +35,4 @@ dependencies {
 
     // ViewModel & LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-
-    // Unit Test
-    testImplementation 'androidx.test:core:1.2.0'
-    testImplementation "androidx.arch.core:core-testing:2.1.0-rc01"
-
-    // Add for test final class
-//    testImplementation 'org.mockito:mockito-inline:2.13.0'
 }

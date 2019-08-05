@@ -2,8 +2,6 @@ package com.syntax.tutorialmvvmdatabindingunittest
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -19,13 +17,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: MainViewModel
-    lateinit var binding: com.syntax.tutorialmvvmdatabindingunittest.databinding.ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        setContentView(R.layout.activity_main)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        binding.viewmodel = viewModel
 
         initSpinners()
         initSpinnerListeners()
@@ -33,21 +29,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initLiveDataObservers() {
-        viewModel.getAllValue().observe(this, Observer { value ->
-            value?.let {
-                tv_hasil.text = value.hasil.toString()
-                edt_nama.setText(value.name)
-            }
-        })
-        viewModel.getSaveLiveData().observe(this, Observer {
-            it?.let {
-                if (it) {
-                    Toast.makeText(this, "ada data", Toast.LENGTH_SHORT).show()
-                } else{
-                    Toast.makeText(this, "harus di isi semua", Toast.LENGTH_SHORT).show()
-                }
-            }
-        })
     }
 
     private fun initSpinnerListeners() {
